@@ -1,13 +1,10 @@
 from django.db import models
-from django.utils import timezone
-from django.contrib.auth.models import User
 
-
-class Create(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE) 
+class Zone(models.Model):
+    _ID = models.IntegerField(help_text='Enter the zone number')
+    description = models.TextField(max_length=100, help_text='Enter a brief description about the zone')
+    flow = models.FloatField(help_text='Approximate zone flow in GPM')
+    area = models.FloatField(help_text='Approximate zone area in sf')
 
     def __str__(self):
         return self.title
